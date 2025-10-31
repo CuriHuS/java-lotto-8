@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.model.domain.Lottos;
 import lotto.view.InputView;
 import lotto.model.service.LottoService;
+import lotto.view.OutputView;
 
 public class LottoController {
     private final LottoService lottoService;
@@ -17,6 +18,8 @@ public class LottoController {
         int purchaseAmount = parsePurchaseAmount(purchaseInput);
 
         Lottos lottos = lottoService.issueLottos(purchaseAmount);
+
+        OutputView.printIssuedLottos(lottos);
     }
 
     private int parsePurchaseAmount(String input)

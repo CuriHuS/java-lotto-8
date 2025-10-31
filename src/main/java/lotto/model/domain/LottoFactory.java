@@ -2,6 +2,7 @@ package lotto.model.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public class LottoFactory {
                 MAX_LOTTO_NUMBER,
                 LOTTO_NUMBER_COUNT
         );
+        Collections.sort(numbers);
         return new Lotto(numbers);
     }
 
