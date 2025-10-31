@@ -31,6 +31,8 @@ public class LottoController {
 
         LottoResults lottoResults = lottoService.checkWinning(lottos, winningLotto, bonusNumber);
         OutputView.printLottoResults(lottoResults);
+        double returnRate = lottoService.calculateReturnRate(lottoResults, purchaseAmount);
+        OutputView.printLottoReturnRate(returnRate);
     }
 
     private Lotto parseWinningLotto(String winningLottoNumbers){
