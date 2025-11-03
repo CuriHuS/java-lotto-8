@@ -35,6 +35,8 @@ public class OutputView {
     }
 
     public static void printLottoResults(LottoResults lottoResults) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
         HashMap<Rank, Integer> rankCounts = lottoResults.getPrizeResults();
         System.out.println(REPLY_FIFTH_PRIZE.getMessage() + rankCounts.get(FIFTH) + "개");
         System.out.println(REPLY_FOURTH_PRIZE.getMessage() + rankCounts.get(FOURTH) + "개");
