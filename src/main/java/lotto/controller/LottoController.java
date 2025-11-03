@@ -19,8 +19,7 @@ public class LottoController {
 
     public void run()
     {
-        String purchaseInput = InputView.inputPurchase();
-        int purchaseAmount = parsePurchaseAmount(purchaseInput);
+        int purchaseAmount = inputPurchaseAmount();
         Lottos lottos = lottoService.issueLottos(purchaseAmount);
         OutputView.printIssuedLottos(lottos);
 
@@ -33,6 +32,20 @@ public class LottoController {
         OutputView.printLottoResults(lottoResults);
         double returnRate = lottoService.calculateReturnRate(lottoResults, purchaseAmount);
         OutputView.printLottoReturnRate(returnRate);
+    }
+
+    private int inputPurchaseAmount()
+    {
+        while (true) {
+            try {
+                String purchaseInput = InputView.inputPurchase();
+                int purchaseAmount = parsePurchaseAmount(purchaseInput);
+                lottoService.issueLottos(purchaseAmount);
+                return purchaseAmount;
+            } catch (IllegalArgumentException e) {
+                OutputView.printExceptionMessage(e.getMessage());
+            }
+        }
     }
 
     private Lotto parseWinningLotto(String winningLottoNumbers){
@@ -73,7 +86,7 @@ public class LottoController {
     private void validateNotEmpty(String input)
     {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 입력되지 않았습니다.");
+            throw new IllegalArgumentException("입력되지 않았습니다.");
         }
     }
 
@@ -81,7 +94,7 @@ public class LottoController {
         try {
             Integer.parseInt(input);
         } catch(NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자여야 합니다.");
+            throw new IllegalArgumentException("구매 금액은 숫자여야 합니다.");
         }
     }
 }

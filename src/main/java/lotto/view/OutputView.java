@@ -6,9 +6,10 @@ import static lotto.model.domain.Rank.FOURTH;
 import static lotto.model.domain.Rank.SECOND;
 import static lotto.model.domain.Rank.THIRD;
 import static lotto.view.constant.OutputMessage.REPLY_FIFTH_PRIZE;
-import static lotto.view.constant.OutputMessage.REPLY_FIRST_PRIZE;
 import static lotto.view.constant.OutputMessage.REPLY_FOURTH_PRIZE;
 import static lotto.view.constant.OutputMessage.REPLY_THIRD_PRIZE;
+import static  lotto.view.constant.OutputMessage.REPLY_SECOND_PRIZE;
+import static lotto.view.constant.OutputMessage.REPLY_FIRST_PRIZE;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ import lotto.model.domain.Lotto;
 import lotto.model.domain.LottoResults;
 import lotto.model.domain.Lottos;
 import lotto.model.domain.Rank;
+import lotto.model.domain.constant.ExceptionMessage;
 
 public class OutputView {
     public static void printIssuedLottos(Lottos lottos) {
@@ -41,11 +43,15 @@ public class OutputView {
         System.out.println(REPLY_FIFTH_PRIZE.getMessage() + rankCounts.get(FIFTH) + "개");
         System.out.println(REPLY_FOURTH_PRIZE.getMessage() + rankCounts.get(FOURTH) + "개");
         System.out.println(REPLY_THIRD_PRIZE.getMessage() + rankCounts.get(THIRD) + "개");
-        System.out.println(REPLY_FIFTH_PRIZE.getMessage() + rankCounts.get(SECOND) + "개");
+        System.out.println(REPLY_SECOND_PRIZE.getMessage() + rankCounts.get(SECOND) + "개");
         System.out.println(REPLY_FIRST_PRIZE.getMessage() + rankCounts.get(FIRST) + "개");
     }
 
     public static void printLottoReturnRate(double rate) {
-        System.out.println("총 수익률은 " + String.format("%,.2f%%", rate) +"입니다.");
+        System.out.println("총 수익률은 " + String.format("%,.1f%%", rate) +"입니다.");
+    }
+
+    public static void printExceptionMessage(String message) {
+        System.out.println(ExceptionMessage.ERROR.getMessage() + " " + message);
     }
 }
