@@ -17,11 +17,11 @@ public class LottoFactory {
      * 랜덤하게 로또 번호를 생성합니다.
      */
     public static Lotto createAutoLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
                 MIN_LOTTO_NUMBER,
                 MAX_LOTTO_NUMBER,
                 LOTTO_NUMBER_COUNT
-        );
+        ));
         Collections.sort(numbers);
         return new Lotto(numbers);
     }

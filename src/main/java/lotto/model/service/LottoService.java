@@ -36,7 +36,7 @@ public class LottoService {
     public double calculateReturnRate(LottoResults results, int purchaseAmount) {
         long totalPrize = calculateTotalPrize(results);
         double rate = (double) totalPrize / purchaseAmount;
-        return Math.round(rate * 10) / 10.0;
+        return Math.round(rate * 1000) / 10.0;
     }
 
     /**

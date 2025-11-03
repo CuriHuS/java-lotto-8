@@ -39,7 +39,6 @@ public class LottoController {
             try {
                 String purchaseInput = InputView.inputPurchase();
                 int purchaseAmount = parsePurchaseAmount(purchaseInput);
-                lottoService.issueLottos(purchaseAmount);
                 return purchaseAmount;
             } catch (IllegalArgumentException e) {
                 OutputView.printExceptionMessage(e.getMessage());
